@@ -39,7 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Authors', // Many-to-Many relation name
                 'value' => implode(', ', ArrayHelper::map($model->authors, 'id', 'name')),
             ],
-            'front_page',
+            [
+                'attribute' => 'front_page',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return $data->front_page ? '<img src="' . $data->getImageUrl() . '" width="150" />' : 'No Image';
+                },
+            ],
         ],
     ]) ?>
 

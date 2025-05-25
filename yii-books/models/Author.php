@@ -31,7 +31,7 @@ class Author extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'surname', 'second_name'], 'required'],
+            [['name'], 'required'],
             [['name', 'surname', 'second_name'], 'string', 'max' => 255],
             [['book_ids'], 'safe'],
         ];

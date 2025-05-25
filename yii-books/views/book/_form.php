@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
 <div class="book-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'isbn')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'front_page')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'front_page')->fileInput(); ?>
 
     <?= $form->field($model, 'author_ids')->checkboxList(
         \yii\helpers\ArrayHelper::map(Author::find()->all(), 'id', 'second_name'),

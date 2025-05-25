@@ -72,7 +72,11 @@ class BookController extends Controller
         $model = new Book();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            $isPost = $model->load($this->request->post());
+            $model->upload();
+            $isSave = $model->save();
+            if ($isPost && $isSave) {
+                $model->upload(); // Process the image
                 $model->unlinkAll('authors', true);
                 foreach ($model->author_ids as $id) {
                     $author = Author::findOne($id);
@@ -102,7 +106,10 @@ class BookController extends Controller
         /** @var Book $model */
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        $isPost = $this->request->isPost && $model->load($this->request->post());
+        $model->upload();
+        $isSave = $model->save();
+        if ($isPost && $isSave) {
             $model->unlinkAll('authors', true);
             foreach ($model->author_ids as $id) {
                 $author = Author::findOne($id);

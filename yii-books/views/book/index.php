@@ -43,6 +43,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'format' => 'html', // Use 'raw' if you are adding HTML tags like badges
             ],
+            [
+                'attribute' => 'front_page',
+                'format' => 'html',
+                'value' => function ($data) {
+                    return $data->front_page ? '<img src="' . $data->getImageUrl() . '" width="50" />' : '';
+                },
+            ],
             //'front_page',
             [
                 'class' => ActionColumn::className(),
