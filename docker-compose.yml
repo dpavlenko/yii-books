@@ -1,0 +1,103 @@
+version: "3.3"
+
+services:
+  backend:
+    image: nginx_php
+    restart: always
+    container_name: nginx_php
+    build:
+      context: ./nginx_php
+      args:
+        UID: ${UID} #(from .env file) UID - linux user id. Synchronize docker with server
+        GID: ${GID} #(from .env file) UID - linux user id. Synchronize docker with server
+      dockerfile: Dockerfile
+    working_dir: /usr/share/nginx/html
+    volumes:
+      - ./yii-books:/usr/share/nginx/html/yii-books
+      - ./nginx_php/conf/nginx/virtual-hosts:/etc/nginx/conf.d
+      - ./nginx_php/conf/nginx/nginx.conf:/etc/nginx/nginx.conf # user
+      - ./nginx_php/conf/php/www.conf:/etc/php83/php-fpm.d/www.conf # php-fpm user
+      - ./nginx_php/logs/nginx:/var/log/nginx
+      - ./nginx_php/logs/php83:/var/log/php83
+      - ./nginx_php/conf/php/php-ini-overrides.ini:/etc/php83/conf.d/50-php-ini-overrides.ini
+      - ./nginx_php/conf/php/50_xdebug.ini:/etc/php83/conf.d/50_xdebug.ini
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+      #- "examle1.ln:172.15.199.121"
+      #- "examle2.ln:172.15.199.122"
+    ports:
+      - "80:80"   #port http
+      - "443:443"  #port https
+    #expose:
+    #  - ${HOST_MACHINE_UNSECURE_HOST_PORT}   #port http
+    #  - ${HOST_MACHINE_SECURE_HOST_PORT}  #port https
+    #  - ${HOST_MACHINE_XDEBUG} #port XDebug
+    links:
+      - mysql
+    networks:
+      yii_books:
+        ipv4_address: 172.15.199.110
+
+#  postgresql:
+#    container_name: 'postgresql'
+#    image: postgres:17.5-alpine3.21
+#    restart: always
+#    volumes:
+#      - staffliner_db:/var/lib/postgresql/data
+#
+#    environment:
+#      TZ: 'GMT+3' #Moscow timezone
+#      PGTZ: 'GMT+3' #Moscow timezone
+#      POSTGRES_DB: ${HOST_POSTGRESQL_DB}
+#      POSTGRES_USER: ${HOST_POSTGRESQL_USER}
+#      POSTGRES_PASSWORD: ${HOST_POSTGRESQL_PASSWORD}
+#    expose:
+#      - ${HOST_MACHINE_POSTGRESQL_PORT}
+#    networks:
+#      staffliner:
+#        ipv4_address: 172.15.198.111
+ 
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - yii_db_data:/var/lib/mysql
+   # expose:
+   #   - ${HOST_MACHINE_POSTGRESQL_PORT}
+    networks:
+      yii_books:
+        ipv4_address: 172.15.199.111
+ 
+  adminer:
+    container_name: 'adminer'
+    image: adminer:5-standalone
+    restart: always
+    links:
+      - mysql
+    expose:
+      - 8080
+#    ports:
+#      - "8080:8080"
+    networks:
+      yii_books:
+        ipv4_address: 172.15.199.112
+
+volumes:
+  yii_db_data:
+
+networks:
+  yii_books:
+    driver: bridge
+    internal: false
+#    external: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.15.199.0/24

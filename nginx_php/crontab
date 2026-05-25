@@ -1,0 +1,35 @@
+#* * * * * echo "Cron job executed at $(date)" >> /tmp/cron_test.log 2>&1
+#* * * * * /usr/local/bin/my_script.sh >> /var/log/cron.log 2>&1
+
+# crontab
+# * * * * * command(s)
+# - - - - -
+# | | | | |
+# | | | | ----- Day of week (0 - 7) (Sunday=0 or 7)
+# | | | ------- Month (1 - 12)
+# | | --------- Day of month (1 - 31)
+# | ----------- Hour (0 - 23)
+# ------------- Minute (0 - 59)
+
+# do daily/weekly/monthly maintenance
+# min   hour    day     month   weekday command
+#*/15    *       *       *       *       run-parts /etc/periodic/15min
+#0       *       *       *       *       run-parts /etc/periodic/hourly
+#0       2       *       *       *       run-parts /etc/periodic/daily
+#0       3       *       *       6       run-parts /etc/periodic/weekly
+#0       5       1       *       *       run-parts /etc/periodic/monthly
+
+#Load all new emails
+*/1 * * * * /usr/bin/php /usr/share/nginx/html/staffliner/staffliner_webapp/bin/console staffliner:emails:load-all #> /var/log/cron/load-emails
+
+#Load all spam emails
+*/5 * * * * /usr/bin/php /usr/share/nginx/html/staffliner/staffliner_webapp/bin/console staffliner:emails:load-spam #> /var/log/cron/load-spam
+
+#Clear deleted emails
+*/5 * * * * /usr/bin/php /usr/share/nginx/html/staffliner/staffliner_webapp/bin/console staffliner:emails:process-queue-delete #> /var/log/cron/delete-emails
+
+#Send emails
+*/1 * * * * /usr/bin/php /usr/share/nginx/html/staffliner/staffliner_webapp/bin/console staffliner:emails:process-queue-send #> /var/log/cron/send-emails
+
+#Invalidate old sessions
+*/10 * * * * /usr/bin/php /usr/share/nginx/html/staffliner/staffliner_webapp/bin/console staffliner:free-old-sessions #> /var/log/cron/load-spam
