@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/yii-books/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/yiisoft/yii2-coding-standards" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/yiisoft/yii2-composer" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/yiisoft/yii2-symfonymailer" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/yiisoft/yii2-faker" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/yiisoft/yii2" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/yiisoft/yii2-bootstrap5" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/yiisoft/yii2-debug" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/yiisoft/yii2-gii" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/bower-asset/jquery" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/bower-asset/inputmask" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/bower-asset/punycode" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/bower-asset/yii2-pjax" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phpstan/phpstan" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/cebe/markdown" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/composer" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/staabm/side-effects-detector" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/phpspec/php-diff" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/behat/gherkin" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/codeception" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/verify" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/module-asserts" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/module-filesystem" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/stub" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/module-phpbrowser" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/lib-innerbrowser" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/lib-web" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/lib-asserts" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/c3" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/codeception/module-yii2" />
+      <path value="$PROJECT_DIR$/yii-books/vendor/twbs/bootstrap" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.3">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
+  <component name="PhpStan">
+    <PhpStan_settings>
+      <PhpStanConfiguration tool_path="$PROJECT_DIR$/yii-books/vendor/bin/phpstan" />
+    </PhpStan_settings>
+  </component>
+  <component name="PhpStanOptionsConfiguration">
+    <option name="memoryLimit" value="-1" />
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+</project>
