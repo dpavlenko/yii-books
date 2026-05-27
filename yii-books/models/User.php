@@ -7,7 +7,7 @@ namespace app\models;
 use yii\base\BaseObject;
 use yii\web\IdentityInterface;
 
-class User extends BaseObject implements IdentityInterface
+class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
     public int|string $id = '';
     public string $username = '';

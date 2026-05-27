@@ -1,0 +1,17 @@
+# phpstorm project files
+.idea
+
+# visual studio code project files
+.vscode
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+/nginx_php/logs/**
+!/nginx_php/logs/nginx/.gitkeep
+!/nginx_php/logs/php83/.gitkeep

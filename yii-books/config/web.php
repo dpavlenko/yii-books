@@ -32,6 +32,7 @@ $config = [
         'user' => [
             'identityClass' => \app\models\User::class,
             'enableAutoLogin' => true,
+            'loginUrl' => ['site/login']
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -55,6 +56,25 @@ $config = [
             ],
         ],
         */
+    ],
+    'as beforeRequest' => [
+        'class' => 'yii\filters\AccessControl',
+        'rules' => [
+            // 1. Allow guests to access the login action to actually authenticate
+            [
+                'allow' => true,
+                'actions' => ['login'],
+            ],
+            // 2. Deny all other actions for guests
+            [
+                'allow' => true,
+                'roles' => ['@'], // '@' represents authenticated users
+            ],
+        ],
+        'denyCallback' => function () {
+            // Redirect to your specific login page
+            return Yii::$app->response->redirect(['site/login']);
+        },
     ],
     'params' => $params,
 ];
