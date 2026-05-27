@@ -28,6 +28,7 @@ $this->params['meta_keywords'] = 'yii, yii2, php, framework, web application, hi
                 <li><a href="/book">Книги</a> </li>
                 <li><a href="/author">Авторы</a></li>
                 <li><a href="/report">Отчет</a></li>
+                <li><a href="/subscription">Подписки</a></li>
             </ul>
 
         </div>

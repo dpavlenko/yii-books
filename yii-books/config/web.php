@@ -58,6 +58,10 @@ $config = [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
         ],
+        'SmsPilot' => [
+            'class' => 'app\components\SmsPilot',
+            'apiKey' => '7SPIJYPMD0991790Q988U4Z8SE1Y6L4N0PP7TYT3AAP75A627HT531CD7JVD0S82',
+        ],
 
     ],
     'as beforeRequest' => [

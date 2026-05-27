@@ -9,6 +9,10 @@ use yii\web\IdentityInterface;
 
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    public const STATUS_DELETED = 0;
+    public const STATUS_INACTIVE = 0;
+    public const STATUS_ACTIVE = 0;
+
     public int|string $id = '';
     public string $username = '';
     public string $passwordHash = '';

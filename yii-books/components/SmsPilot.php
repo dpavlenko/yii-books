@@ -2,13 +2,13 @@
 
 namespace app\components;
 
+use Yii;
 use yii\base\BaseObject;
 use yii\base\InvalidConfigException;
 
 class SmsPilot extends BaseObject
 {
     public $apiKey;
-    public $senderName = 'INFORM'; // Your registered sender ID, or use SMSPILOT default names
 
     /**
      * Sends an SMS using SMSPILOT HTTP API
@@ -23,14 +23,18 @@ class SmsPilot extends BaseObject
             throw new InvalidConfigException('SmsPilot::$apiKey must be set.');
         }
 
-        $url = 'https://smspilot.ru';
+        $url = 'https://smspilot.ru/api.php';
 
         $params = [
             'send' => $message,
             'to' => $phone,
             'apikey' => $this->apiKey,
-            'from' => $this->senderName, // Optional: requires registered sender name
+            //'from' => $this->senderName, // Optional: requires registered sender name
         ];
+
+        $url .= '?' . http_build_query($params);
+//        var_dump($url);
+//        exit;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url . '?' . http_build_query($params));
@@ -39,7 +43,9 @@ class SmsPilot extends BaseObject
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 
         $response = curl_exec($ch);
+        var_dump($response);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        var_dump($httpCode);
         curl_close($ch);
 
         // Parse JSON response from SMS Pilot

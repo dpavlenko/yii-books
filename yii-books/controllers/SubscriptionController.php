@@ -2,20 +2,27 @@
 
 namespace app\controllers;
 
-use app\models\Author;
-use app\models\Book;
-use app\models\BookSearch;
 use app\models\Subscription;
-use Yii;
+use app\models\SubscriptionSearch;
+use app\models\User;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BookController implements the CRUD actions for Book model.
+ * SubscriptionController implements the CRUD actions for Subscription model.
  */
-class BookController extends Controller
+class SubscriptionController extends Controller
 {
+    public function actions()
+    {
+        $actions = parent::actions();
+        unset($actions['create']); // Remove default action mapping
+        unset($actions['update']); // Remove default action mapping
+        unset($actions['index']); // Remove default action mapping
+        return $actions;
+    }
     /**
      * @inheritDoc
      */
@@ -34,22 +41,14 @@ class BookController extends Controller
         );
     }
 
-    public function actions()
-    {
-        $actions = parent::actions();
-        unset($actions['create']); // Remove default action mapping
-        return $actions;
-    }
     /**
-
-    /**
-     * Lists all Book models.
+     * Lists all Subscription models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new BookSearch();
+        $searchModel = new SubscriptionSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -59,7 +58,7 @@ class BookController extends Controller
     }
 
     /**
-     * Displays a single Book model.
+     * Displays a single Subscription model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -72,33 +71,21 @@ class BookController extends Controller
     }
 
     /**
-     * Creates a new Book model.
+     * Creates a new Subscription model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        /** @var Book $model */
-        $model = new Book();
+        $model = new Subscription();
+        $users = User::find()->all();
+        $listData = [];
+        foreach ($users as $user) {
+            $listData[$user->getAttribute('id')] = $user->getAttribute('username');
+        }
 
         if ($this->request->isPost) {
-            $isPost = $model->load($this->request->post());
-            $model->upload();
-            $isSave = $model->save();
-            if ($isPost && $isSave) {
-                $model->upload(); // Process the image
-                $model->unlinkAll('authors', true);
-                foreach ($model->author_ids as $id) {
-                    $author = Author::findOne($id);
-                    $model->link('authors', $author); // Inserts into junction table
-                }
-
-                //Message from SmsPilot
-                $subscriptions = Subscription::find()->all();
-                foreach ($subscriptions as $subscription) {
-                    Yii::$app->SmsPilot->sendMessage($subscription->phone, $model->name);
-                }
-
+            if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -107,11 +94,12 @@ class BookController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'userList' => $listData
         ]);
     }
 
     /**
-     * Updates an existing Book model.
+     * Updates an existing Subscription model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -119,28 +107,25 @@ class BookController extends Controller
      */
     public function actionUpdate($id)
     {
-        /** @var Book $model */
         $model = $this->findModel($id);
+        $users = User::find()->all();
+        $listData = [];
+        foreach ($users as $user) {
+            $listData[$user->getAttribute('id')] = $user->getAttribute('username');
+        }
 
-        $isPost = $this->request->isPost && $model->load($this->request->post());
-        $model->upload();
-        $isSave = $model->save();
-        if ($isPost && $isSave) {
-            $model->unlinkAll('authors', true);
-            foreach ($model->author_ids as $id) {
-                $author = Author::findOne($id);
-                $model->link('authors', $author); // Inserts into junction table
-            }
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'userList' => $listData
         ]);
     }
 
     /**
-     * Deletes an existing Book model.
+     * Deletes an existing Subscription model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -154,15 +139,15 @@ class BookController extends Controller
     }
 
     /**
-     * Finds the Book model based on its primary key value.
+     * Finds the Subscription model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Book the loaded model
+     * @return Subscription the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Book::findOne(['id' => $id])) !== null) {
+        if (($model = Subscription::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
