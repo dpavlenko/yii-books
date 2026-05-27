@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Authors',
                 'value' => function ($model) {
                     // Extract and implode category names
-                    return implode(', ', \yii\helpers\ArrayHelper::map($model->authors, 'id', 'name'));
+                    return implode(', ', \yii\helpers\ArrayHelper::map($model->authors, 'id', 'fullName'));
                 },
                 'format' => 'html', // Use 'raw' if you are adding HTML tags like badges
             ],
