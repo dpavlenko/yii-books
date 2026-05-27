@@ -70,7 +70,8 @@ $config = [
             // 1. Allow guests to access the login action to actually authenticate
             [
                 'allow' => true,
-                'actions' => ['login'],
+                'actions' => ['login','index'],
+//                'roles' => ['?'], // Guest only
             ],
             // 2. Deny all other actions for guests
             [
